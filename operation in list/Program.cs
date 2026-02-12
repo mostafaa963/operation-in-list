@@ -1,10 +1,13 @@
 ﻿using System.Security.Cryptography;
 
-List<int> list =new List<int>();
+System.Console.Write("Enter your Name: ");
+string Name = Console.ReadLine() ?? string.Empty;
+List<int> list = new List<int>();
 while (true)
 {
     char oparation;
     Console.WriteLine("=========Main Menu========");
+    System.Console.WriteLine($"Hello,{Name}");
     Console.WriteLine($"P - Print numbers");
     Console.WriteLine($"A - Add a numbers");
     Console.WriteLine($"M - Display mean of the numbers");
@@ -16,8 +19,8 @@ while (true)
     Console.WriteLine($"W - Swapping to number");
     Console.WriteLine($"Q - quit");
     Console.Write(": ");
-    oparation = Convert.ToChar(Console.ReadLine());
-    bool exit=false;
+    oparation = Convert.ToChar(Console.ReadLine() ?? string.Empty);
+    bool exit = false;
     switch (oparation)
     {
         case 'P':
@@ -28,14 +31,14 @@ while (true)
             break;
         case 'A':
             Console.Write("How many  number you want added: ");
-            int  count_number=Convert.ToInt32(Console.ReadLine());
-            List<int> x=new List<int>();
+            int count_number = Convert.ToInt32(Console.ReadLine());
+            List<int> x = new List<int>();
             bool a = true;
             for (int J = 0; J < count_number; J++)
             {
                 Console.Write("Enter the number to add: ");
                 x.Add(Convert.ToInt32(Console.ReadLine()));
-               
+
                 for (int i = 0; i < list.Count; i++)
                 {
                     if (x[J] == list[i])
@@ -57,7 +60,7 @@ while (true)
             }
             if (a)
             {
-                Console.WriteLine($"[{string.Join(",",x)}] Added");
+                Console.WriteLine($"[{string.Join(",", x)}] Added");
                 x.Clear();
             }
             break;
@@ -148,7 +151,8 @@ while (true)
                         }
                     }
             }
-            else {
+            else
+            {
                 for (int i = 0; i < list.Count; i++)
                     for (int j = 0; j < list.Count; j++)
                     {
@@ -161,14 +165,14 @@ while (true)
                     }
 
             }
-                break;
+            break;
         case 'W':
             if (list.Count > 0)
             {
                 Console.WriteLine($"Enter the index you want swapping between[0-{list.Count()}");
                 int num = Convert.ToInt32(Console.ReadLine());
                 int num1 = Convert.ToInt32(Console.ReadLine());
-                num--;num1--;
+                num--; num1--;
                 int tmp = list[num];
                 list[num] = list[num1];
                 list[num1] = tmp;
@@ -176,7 +180,7 @@ while (true)
             }
             else
                 Console.WriteLine($"{string.Join(",", list)} the list is Empty");
-                break;
+            break;
         default:
             Console.WriteLine("=====invaild Character=====");
             break;
